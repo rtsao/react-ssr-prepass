@@ -12,9 +12,9 @@ import {
 import {
   mountFunctionComponent,
   mountClassComponent,
-  mountLazyComponent,
-  mountStyledComponent,
-  isStyledElement
+  mountLazyComponent
+  // mountStyledComponent,
+  // isStyledElement
 } from './render'
 
 import type {
@@ -143,9 +143,9 @@ export const visitElement = (
 
       // If we find a StyledComponent, we trigger a specific optimisation
       // that allows quick rendering of them without computing styles
-      if (isStyledElement(refElement)) {
-        return mountStyledComponent(refElement)
-      }
+      // if (isStyledElement(refElement)) {
+      //   return mountStyledComponent(refElement)
+      // }
 
       const { render: type, defaultProps } = refElement.type
       const props = computeProps(refElement.props, defaultProps)

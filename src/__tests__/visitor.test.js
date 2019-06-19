@@ -11,7 +11,7 @@ import React, {
 } from 'react'
 
 import { createPortal } from 'react-dom'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 
 import {
   Dispatcher,
@@ -107,42 +107,42 @@ describe('visitElement', () => {
     expect(children[1].type).toBe(Noop)
   })
 
-  it('walks StyledComponent DOM elements', () => {
-    const Comp = styled.div``
-    const children = visitElement(
-      <Comp>
-        <Noop />
-      </Comp>,
-      [],
-      () => {}
-    )
-
-    expect(children.length).toBe(1)
-    expect(children[0].type).toBe(Noop)
-    expect(StyleSheet.master.tags.length).toBe(1)
-
-    const tag = StyleSheet.master.tags[0]
-    expect(tag.css().trim()).toBe('')
-
-    expect(Object.keys(StyleSheet.master.deferred)).toEqual([
-      expect.any(String)
-    ])
-  })
-
-  it('walks StyledComponent wrapper elements', () => {
-    const Comp = styled(Noop)``
-    const children = visitElement(<Comp />, [], () => {})
-
-    expect(children.length).toBe(1)
-    expect(StyleSheet.master.tags.length).toBe(1)
-
-    const tag = StyleSheet.master.tags[0]
-    expect(tag.css().trim()).toBe('')
-
-    expect(Object.keys(StyleSheet.master.deferred)).toEqual([
-      expect.any(String)
-    ])
-  })
+  // it('walks StyledComponent DOM elements', () => {
+  //   const Comp = styled.div``
+  //   const children = visitElement(
+  //     <Comp>
+  //       <Noop />
+  //     </Comp>,
+  //     [],
+  //     () => {}
+  //   )
+  //
+  //   expect(children.length).toBe(1)
+  //   expect(children[0].type).toBe(Noop)
+  //   expect(StyleSheet.master.tags.length).toBe(1)
+  //
+  //   const tag = StyleSheet.master.tags[0]
+  //   expect(tag.css().trim()).toBe('')
+  //
+  //   expect(Object.keys(StyleSheet.master.deferred)).toEqual([
+  //     expect.any(String)
+  //   ])
+  // })
+  //
+  // it('walks StyledComponent wrapper elements', () => {
+  //   const Comp = styled(Noop)``
+  //   const children = visitElement(<Comp />, [], () => {})
+  //
+  //   expect(children.length).toBe(1)
+  //   expect(StyleSheet.master.tags.length).toBe(1)
+  //
+  //   const tag = StyleSheet.master.tags[0]
+  //   expect(tag.css().trim()).toBe('')
+  //
+  //   expect(Object.keys(StyleSheet.master.deferred)).toEqual([
+  //     expect.any(String)
+  //   ])
+  // })
 
   it('walks Providers and Consumers', () => {
     const Context = createContext('default')
