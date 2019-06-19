@@ -1,5 +1,5 @@
 {
-  "name": "react-ssr-prepass",
+  "name": "@rtsao/react-ssr-prepass",
   "version": "1.0.7",
   "description": "A custom partial React SSR renderer for prefetching and suspense",
   "main": "index.js",
